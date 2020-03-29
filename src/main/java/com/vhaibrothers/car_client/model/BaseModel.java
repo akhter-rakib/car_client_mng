@@ -1,5 +1,6 @@
 package com.vhaibrothers.car_client.model;
 
+import com.vhaibrothers.car_client.config.ActiveStatus;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -16,9 +17,9 @@ public abstract class BaseModel {
     private Long createdBy;
     private Date updatedAt;
     private Long updatedBy;
-    private Boolean active;
+    private int active;
 
-    public BaseModel(Date createdAt, Long createdBy, Date updatedAt, Long updatedBy, Boolean active) {
+    public BaseModel(Date createdAt, Long createdBy, Date updatedAt, Long updatedBy, int active) {
         this.createdAt = createdAt;
         this.createdBy = createdBy;
         this.updatedAt = updatedAt;
@@ -32,7 +33,7 @@ public abstract class BaseModel {
     @PrePersist
     public void prePersist() {
         this.createdAt = new Date();
-        this.active = true;
+        this.active = ActiveStatus.ACTIVE.getValue();
     }
 
     @PreUpdate
