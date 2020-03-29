@@ -3,9 +3,9 @@ package com.vhaibrothers.car_client.model;
 import javax.persistence.*;
 
 @Entity
-public class CarDetails {
+public class CarDetails extends BaseModel {
     @Id
-    private Integer id;
+    private Long id;
     private String carCompanyName;
     private String carYearModel;
     private String carCC;
@@ -16,7 +16,7 @@ public class CarDetails {
     @JoinColumn(name = "car_reg_no")
     private Car car;
 
-    public CarDetails(Integer id, String carCompanyName, String carYearModel, String carCC, String carColor, Double carKilometers, Double price, Car car) {
+    public CarDetails(Long id, String carCompanyName, String carYearModel, String carCC, String carColor, Double carKilometers, Double price, Car car) {
         this.id = id;
         this.carCompanyName = carCompanyName;
         this.carYearModel = carYearModel;
@@ -27,11 +27,11 @@ public class CarDetails {
         this.car = car;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
